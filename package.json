@@ -18,7 +18,7 @@
   "scripts": {
     "api": "lerna --scope=sugu-services run dev --stream --",
     "mobile": "lerna --scope=sugu-mobile run expo --stream --",
-    "postinstall": "cd ./packages/ExpoApp && expo-yarn-workspaces postinstall"
+    "postinstall": "./scripts/postinstall.sh"
   },
   "dependencies": {
     "metro-config": "^0.59.0"

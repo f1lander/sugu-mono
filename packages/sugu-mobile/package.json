@@ -11,8 +11,7 @@
     "web": "expo start --web",
     "start": "react-native start",
     "test": "jest",
-    "expo": "expo start -c",
-    "postinstall": "expo-yarn-workspaces postinstall"
+    "expo": "expo start -c"
   },
   "dependencies": {
     "expo": "~37.0.3",
