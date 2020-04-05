@@ -12,6 +12,9 @@
     ],
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "packagerOpts": {
+      "config": "metro.config.js"
+    }
   }
 }

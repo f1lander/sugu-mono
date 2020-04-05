@@ -1,0 +1,26 @@
+{
+  "name": "sugu-mono",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.20.2"
+  },
+  "workspaces": {
+    "nohoist": [
+      "**/react-native",
+      "**/react-native/**",
+      "**/expo",
+      "**/expo/**"
+    ],
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "api": "lerna --scope=sugu-services run dev --stream --",
+    "mobile": "lerna --scope=sugu-mobile run expo --stream --",
+    "postinstall": "cd ./packages/ExpoApp && expo-yarn-workspaces postinstall"
+  },
+  "dependencies": {
+    "metro-config": "^0.59.0"
+  }
+}

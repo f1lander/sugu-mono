@@ -1,10 +1,10 @@
 {
-  "name": "prieto-chat-server",
+  "name": "sugu-services",
   "version": "1.0.0",
-  "description": "This is a code challenge from jobsity",
+  "description": "This is the api for sugu marketplace",
   "main": "index.js",
-  "repository": "git@github.com:f1lander/prieto-chat.git",
-  "author": "Edax Ucles",
+  "repository": "git@github.com:f1lander/sugu-mono.git",
+  "author": "Sugu Team",
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpileOnly ./src/server.ts",

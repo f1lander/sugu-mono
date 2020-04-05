@@ -1,11 +1,18 @@
 {
-  "main": "index.js",
+  "name": "sugu-mobile",
+  "version": "1.0.0",
+  "description": "This is the mobile app for sugu marketplace",
+  "main": "__generated__/AppEntry.js",
+  "repository": "git@github.com:f1lander/sugu-mono.git",
+  "author": "Sugu Team",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "web": "expo start --web",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "expo": "expo start -c",
+    "postinstall": "expo-yarn-workspaces postinstall"
   },
   "dependencies": {
     "expo": "~37.0.3",
@@ -24,6 +31,7 @@
     "@types/react": "~16.9.23",
     "@types/react-native": "~0.61.17",
     "babel-preset-expo": "~8.1.0",
+    "expo-yarn-workspaces": "^1.2.1",
     "jest-expo": "~37.0.0",
     "typescript": "~3.8.3"
   },
