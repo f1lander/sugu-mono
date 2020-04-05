@@ -1,3 +1,9 @@
-node_modules
-.env
-dist
+# OSX
+#
+.DS_Store
+
+# Dependency directories
+node_modules/
+
+# build
+web-build/
