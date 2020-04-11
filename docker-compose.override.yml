@@ -1,0 +1,17 @@
+# Overrides docker-compose.yml.
+version: '3.4'
+
+services:
+  sugu-ui:
+    container_name: sugu-ui
+    # environment:
+    #   - HOST_USER_ID=$HOST_USER_ID
+    #   - TUNNEL=$TUNNEL
+    volumes:
+      - ./packages/sugu-ui:/srv/sugu-ui
+      # Needed so container will load linux-specific binary packages.
+      # https://jdlm.info/articles/2019/09/06/lessons-building-node-app-docker.html
+      - sugu-ui-node_modules:/srv/sugu-ui/node_modules
+
+volumes:
+    sugu-ui-node_modules:
