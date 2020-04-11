@@ -1,9 +1,7 @@
 {
   "name": "sugu-mono",
   "private": true,
-  "devDependencies": {
-    "lerna": "^3.20.2"
-  },
+  "devDependencies": {},
   "workspaces": {
     "nohoist": [
       "**/react-native",
@@ -16,8 +14,8 @@
     ]
   },
   "scripts": {
-    "api": "lerna --scope=sugu-services run dev --stream --",
-    "mobile": "lerna --scope=sugu-mobile run expo --stream --",
+    "setup": "./scripts/setup.sh",
+    "start": "./scripts/start.sh",
     "postinstall": "./scripts/postinstall.sh"
   },
   "dependencies": {
