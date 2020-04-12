@@ -8,12 +8,12 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-You will need to have `NodeJS`  **v10.x** running in your development environment, we suggest you also setup `nvm` to manage different `nodejs` versions. Also this monorepo relies on `yarn` to handle workspaces.
+You will need to have `NodeJS`  **v12.x** running in your development environment, we suggest you also setup `nvm` to manage different `nodejs` versions. Also this monorepo relies on `yarn` to handle workspaces. Projects are setup to use `docker`, except `sugu-mobile`.
 
 ### Installing
 
 - Installing `node`
-	-	Please follow these [instructions](https://github.com/nvm-sh/nvm#install--update-script) (do not use `brew`).
+	- Please follow these [instructions](https://github.com/nvm-sh/nvm#install--update-script) (do not use `brew`).
 
 - Installing yarn (you must have brew)
 ```
@@ -33,6 +33,19 @@ yarn global add expo-cli
 brew install watchman
 ```
 >For reference purpose, initial setup was made following this [Medium post](https://medium.com/habilelabs/react-native-react-web-and-expo-together-in-one-monorepo-5b8f9a0fca00).
+
+## Running the projects
+
+Before anything, you need to get your `.env` file created with the correct environment variables in `sugu-services`, please ask your peers for this configuration.
+
+After the `.env` file is setup, you need to build the images and run the containers. All of this is has been done using `docker-compose`. Run this command:
+```
+yarn run setup
+```
+Everytime you want to run the applications you can the following command which will start sugu-ui and sugu-services in :
+```
+yarn start
+```
 
 ## Running the tests
 

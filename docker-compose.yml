@@ -1,18 +1,5 @@
 version: '3.4'
 services:
-  # sugu-services:
-  #   build:
-  #     context: .
-  #     dockerfile: ./packages/sugu-services/Dockerfile
-  #   ports:
-  #     - '3001:3000'
-  #     - '9229:9229'
-  #   environment: []
-  #   ulimits:
-  #     nofile:
-  #       soft: 98304
-  #       hard: 98304
-
   sugu-ui:
     build:
       context: .
@@ -22,8 +9,24 @@ services:
       - '3000:3000'
       - '35729:35729'
     stdin_open: true
+    depends_on:
+      - sugu-services
     environment: []
     ulimits:
       nofile:
         soft: 98304
         hard: 98304
+  sugu-services:
+    build:
+      context: .
+      dockerfile: ./packages/sugu-services/Dockerfile
+      target: dev
+    ports:
+      - '3001:3000'
+      - '9229:9229'
+    environment: []
+    ulimits:
+      nofile:
+        soft: 98304
+        hard: 98304
+    env_file: ./packages/sugu-services/.env
