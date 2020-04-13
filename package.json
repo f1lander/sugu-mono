@@ -25,15 +25,16 @@
   "lint-staged": {
     "packages/sugu-ui/**/*.{ts,tsx,js,jsx,json,css,scss,md}": [
       "prettier --config ./packages/sugu-ui/.prettierrc --write",
-      "eslint --config ./packages/sugu-ui/.eslintrc.json",
+      "eslint --config ./packages/sugu-ui/.eslintrc.json --fix",
       "git add"
     ],
     "packages/sugu-services/**/*.{ts,json,js,md}": [
       "prettier --write",
       "git add"
     ],
-    "packages/sugu-mobile/**/*.{ts,json,js,md}": [
+    "packages/sugu-mobile/**/*.{js,jsx,json,tsx,jsx,md}": [
       "prettier --write",
+      "eslint --config ./packages/sugu-mobile/.eslintrc.js --fix",
       "git add"
     ]
   },

@@ -1,29 +1,25 @@
 {
   "root": true,
   "env": {
-    "browser": true,
-    "es6": true,
+    "react-native/react-native": true,
     "jest/globals": true
   },
   "extends": [
-    "react-app",
+    "@react-native-community",
     "plugin:react/recommended",
+    "plugin:react-native/all",
     "airbnb",
     "prettier/react",
     "prettier/@typescript-eslint",
     "plugin:prettier/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:jsx-a11y/recommended",
+    "plugin:react-native-a11y/basic",
     "plugin:jest/recommended",
     "plugin:react-hooks/recommended",
     "plugin:import/typescript",
     "plugin:react-redux/recommended"
   ],
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -32,22 +28,9 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "prettier", "jsx-a11y", "jest", "react-redux", "import", "react-hooks"],
-  "ignorePatterns": ["build/", "node_modules/", "dist/", "public/"],
+  "plugins": ["react", "@typescript-eslint", "prettier", "jest", "react-native", "react-redux", "import", "react-hooks", "jsx-a11y"],
+  "ignorePatterns": ["build/", "node_modules/", "dist/", "public/", "ios/", "android/", "__generated__/", "web_build"],
   "rules": {
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "js": "never",
-        "jsx": "never",
-        "ts": "never",
-        "tsx": "never"
-      }
-    ],
-    "prettier/prettier": "error",
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/no-unused-vars": "off",
     "react/jsx-filename-extension": [
       1,
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
