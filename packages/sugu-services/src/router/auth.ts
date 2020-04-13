@@ -1,14 +1,14 @@
-import * as jwt from "express-jwt";
-import { Request } from "express";
+import * as jwt from 'express-jwt';
+import { Request } from 'express';
 
-require("dotenv").config();
+require('dotenv').config();
 const getTokenFromHeaders = (req: Request) => {
   const {
-    headers: { authorization }
+    headers: { authorization },
   } = req;
 
-  if (authorization && authorization.split(" ")[0] === "Bearer") {
-    return authorization.split(" ")[1];
+  if (authorization && authorization.split(' ')[0] === 'Bearer') {
+    return authorization.split(' ')[1];
   }
   return null;
 };
@@ -16,15 +16,15 @@ const getTokenFromHeaders = (req: Request) => {
 const auth = {
   required: jwt({
     secret: process.env.SECRET_KEY,
-    userProperty: "payload",
-    getToken: getTokenFromHeaders
+    userProperty: 'payload',
+    getToken: getTokenFromHeaders,
   }),
   optional: jwt({
     secret: process.env.SECRET_KEY,
-    userProperty: "payload",
+    userProperty: 'payload',
     getToken: getTokenFromHeaders,
-    credentialsRequired: false
-  })
+    credentialsRequired: false,
+  }),
 };
 
 export default auth;

@@ -1,1 +1,1 @@
-declare module "passport-local";
+declare module 'passport-local';

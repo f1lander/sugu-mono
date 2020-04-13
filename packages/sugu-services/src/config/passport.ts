@@ -1,8 +1,8 @@
-import * as mongoose from "mongoose";
-import * as passport from "passport";
-import * as LocalStrategy from "passport-local";
+import * as mongoose from 'mongoose';
+import * as passport from 'passport';
+import * as LocalStrategy from 'passport-local';
 
-import { default as User, IUser } from "../models/User";
+import { default as User, IUser } from '../models/User';
 
 // passport.use(
 //   "local",
@@ -43,19 +43,19 @@ import { default as User, IUser } from "../models/User";
 // );
 
 passport.use(
-  "local",
+  'local',
   new LocalStrategy((username: any, password: any, done: any) => {
     User.findOne({ email: username })
       .then(async (user) => {
         const isCorrectPass = await user.isCorrectPassword(password);
         if (!user || !isCorrectPass) {
           return done({
-            error: "invalid_password"
+            error: 'invalid_password',
           });
         }
 
         return done(null, user);
       })
       .catch(done);
-  })
+  }),
 );

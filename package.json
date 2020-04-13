@@ -31,7 +31,8 @@
       "eslint --config ./packages/sugu-ui/.eslintrc.json --fix"
     ],
     "packages/sugu-services/**/*.{ts,json,js,md}": [
-      "prettier --write"
+      "prettier --config ./packages/sugu-services/.prettierrc --write",
+      "eslint --config ./packages/sugu-services/.eslintrc.json --fix"
     ],
     "packages/sugu-mobile/**/*.{js,jsx,json,tsx,jsx,md}": [
       "prettier --config ./packages/sugu-mobile/.prettierrc --write",

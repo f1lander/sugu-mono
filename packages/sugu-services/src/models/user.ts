@@ -1,6 +1,6 @@
-import { Schema, Document, model, Types } from "mongoose";
-import { hash, compare } from "bcrypt";
-import { sign } from "jsonwebtoken";
+import { Schema, Document, model, Types } from 'mongoose';
+import { hash, compare } from 'bcrypt';
+import { sign } from 'jsonwebtoken';
 const saltRounds = 10;
 
 export interface IUser extends Document {
@@ -27,7 +27,7 @@ const UserSchema: Schema = new Schema({
     required: true,
     default: {
       preferences: {
-        language: "es",
+        language: 'es',
       },
     },
   },
@@ -50,7 +50,7 @@ UserSchema.methods.generateJWT = function () {
       id: this._id,
       exp,
     },
-    "secret"
+    'secret',
   );
 };
 
@@ -62,9 +62,9 @@ UserSchema.methods.toAuthJSON = function () {
 };
 
 // All the pre methods
-UserSchema.pre("save", function (next) {
+UserSchema.pre('save', function (next) {
   // Check if document is new or a new password has been set
-  if (this.isNew || this.isModified("password")) {
+  if (this.isNew || this.isModified('password')) {
     // Saving reference to this because of changing scopes
     const document: any = this;
     hash(document.password, saltRounds, function (err, hashedPassword) {
@@ -81,4 +81,4 @@ UserSchema.pre("save", function (next) {
 });
 
 // Export the model and return your IUser interface
-export default model<IUser>("User", UserSchema);
+export default model<IUser>('User', UserSchema);

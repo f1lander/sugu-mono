@@ -1,3 +1,3 @@
 export default {
-    INVALID_PASSWORD: 'Invalid Password',
-}
+  INVALID_PASSWORD: 'Invalid Password',
+};
