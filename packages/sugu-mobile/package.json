@@ -11,14 +11,16 @@
     "web": "expo start --web",
     "start": "react-native start",
     "test": "jest",
-    "expo": "expo start -c"
+    "expo": "expo start -c",
+    "lint": "eslint **/*.{ts,tsx,js,jsx} --fix --no-error-on-unmatched-pattern",
+    "format": "prettier . --write"
   },
   "dependencies": {
     "expo": "~37.0.3",
     "expo-updates": "~0.1.0",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
-    "react-native": "~0.61.4",
+    "react-native": "^0.62.2",
     "react-native-gesture-handler": "~1.6.0",
     "react-native-reanimated": "~1.7.0",
     "react-native-screens": "~2.2.0",
@@ -30,29 +32,28 @@
     "@react-native-community/eslint-config": "^1.0.0",
     "@types/react": "~16.9.23",
     "@types/react-native": "~0.61.17",
-    "@typescript-eslint/eslint-plugin": "^2.26.0",
-    "@typescript-eslint/parser": "^2.26.0",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
     "babel-preset-expo": "~8.1.0",
     "eslint": "^6.8.0",
-    "eslint-config-airbnb-typescript": "^7.2.0",
+    "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-jest": "^23.8.2",
+    "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^3.0.0",
+    "eslint-plugin-react-native": "^3.8.1",
+    "eslint-plugin-react-native-a11y": "^2.0.0",
+    "eslint-plugin-react-redux": "^3.0.3",
     "expo-yarn-workspaces": "^1.2.1",
-    "husky": "^4.2.3",
     "jest-expo": "~37.0.0",
-    "prettier": "^2.0.2",
-    "pretty-quick": "^2.0.1",
+    "prettier": "^2.0.4",
+    "react-test-renderer": "^16.13.1",
     "typescript": "~3.8.3"
   },
   "jest": {
     "preset": "react-native"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged --pattern \"packages/sugu-mobile/**/*.{js,jsx,json,tsx,jsx}\""
-    }
   },
   "private": true
 }
