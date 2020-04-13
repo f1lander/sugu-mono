@@ -1,12 +1,11 @@
 # Codename Sugu
-
 This is a monorepo for the Sugu Marketplace. It contains the codebase for all the projects which are sugu-services (backend), sugu-mobile (mobile app) and sugu-ui (web app).
 
 ## Getting Started
-
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. For the time being, setup instructions are aimed for MacOS, if you make it work on Windows, please update the corresponding sections. See deployment for notes on how to deploy the projects to the different environments.
 
 ### Prerequisites
+The following repo has extra configuration for Visual Studio Code as the editor, however this doesn't mean that you can't use your favorite code editor. Also, most of the setup has been done with MacOS X in mind, most of the things might work in a Linux development environment. On Windows though, some tweaks will have to be made.
 
 You will need to have `NodeJS`  **v12.x** running in your development environment, we suggest you also setup `nvm` to manage different `nodejs` versions. Also this monorepo relies on `yarn` to handle workspaces. Projects are setup to use `docker`, except `sugu-mobile`.
 
@@ -46,9 +45,12 @@ Everytime you want to run the applications you can the following command which w
 ```
 yarn start
 ```
+When npm packages are added, removed or changed, they need to be updated in the containers as well, to achieve this run this command everytime it happens:
+```
+yarn run update-packages
+```
 
 ## Running the tests
-
 All projects have tests setup with `jest`, hopefully we will have unit tests on most of our projects.
 
 You can run tests on each repo like:
@@ -56,11 +58,21 @@ You can run tests on each repo like:
 yarn workspace sugu-mobile run test
 ```
 
-### And coding style tests
+### Coding style
+Coding style is enforced by `prettier` and `eslint`, both of them a formatter and a linter respectively. Each project has a `format` and a `lint` script that will run the specified task on their projects.
 
-Explain what these tests test and why
+At the root of the monorepo, `husky` and `lintstaged` have been configured to check on the staged files before they are commited to git.
+
+On top of that, Visual Studio extensions for `prettier` and `eslint` have been configured. When VS Code opens, it will suggest to install them if you don't have them.
+
+Running format:
 ```
-Give an example
+yarn workspace <package name> run format
+```
+
+Running linter:
+```
+yarn workspace <package name> run lint
 ```
 
 ## Deployment
