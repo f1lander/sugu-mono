@@ -22,22 +22,20 @@
   "scripts": {
     "setup": "./scripts/setup.sh",
     "start": "./scripts/start.sh",
+    "update-packages": "./scripts/update-packages.sh",
     "postinstall": "./scripts/postinstall.sh"
   },
   "lint-staged": {
     "packages/sugu-ui/**/*.{ts,tsx,js,jsx,json,css,scss,md}": [
       "prettier --config ./packages/sugu-ui/.prettierrc --write",
-      "eslint --config ./packages/sugu-ui/.eslintrc.json --fix",
-      "git add"
+      "eslint --config ./packages/sugu-ui/.eslintrc.json --fix"
     ],
     "packages/sugu-services/**/*.{ts,json,js,md}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ],
     "packages/sugu-mobile/**/*.{js,jsx,json,tsx,jsx,md}": [
       "prettier --config ./packages/sugu-mobile/.prettierrc --write",
-      "eslint --config ./packages/sugu-mobile/.eslintrc.json --fix",
-      "git add"
+      "eslint --config ./packages/sugu-mobile/.eslintrc.json --fix"
     ]
   },
   "husky": {
