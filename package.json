@@ -4,7 +4,9 @@
   "devDependencies": {
     "husky": "^4.2.5",
     "lint-staged": "^10.1.3",
-    "prettier": "^2.0.4"
+    "prettier": "^2.0.4",
+    "eslint": "^6.8.0",
+    "metro-config": "^0.59.0"
   },
   "workspaces": {
     "nohoist": [
@@ -33,12 +35,14 @@
       "git add"
     ],
     "packages/sugu-mobile/**/*.{js,jsx,json,tsx,jsx,md}": [
-      "prettier --write",
-      "eslint --config ./packages/sugu-mobile/.eslintrc.js --fix",
+      "prettier --config ./packages/sugu-mobile/.prettierrc --write",
+      "eslint --config ./packages/sugu-mobile/.eslintrc.json --fix",
       "git add"
     ]
   },
-  "dependencies": {
-    "metro-config": "^0.59.0"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }

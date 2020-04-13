@@ -28,8 +28,28 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "prettier", "jest", "react-native", "react-redux", "import", "react-hooks", "jsx-a11y"],
-  "ignorePatterns": ["build/", "node_modules/", "dist/", "public/", "ios/", "android/", "__generated__/", "web_build"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "prettier",
+    "jest",
+    "react-native",
+    "react-redux",
+    "import",
+    "react-hooks",
+    "jsx-a11y"
+  ],
+  "ignorePatterns": [
+    "build/",
+    "node_modules/",
+    "dist/",
+    "public/",
+    "ios/",
+    "android/",
+    "__generated__/",
+    "web_build/",
+    "**/*.json"
+  ],
   "rules": {
     "react/jsx-filename-extension": [
       1,
