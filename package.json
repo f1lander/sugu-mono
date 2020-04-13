@@ -1,7 +1,11 @@
 {
   "name": "sugu-mono",
   "private": true,
-  "devDependencies": {},
+  "devDependencies": {
+    "husky": "^4.2.5",
+    "lint-staged": "^10.1.3",
+    "prettier": "^2.0.4"
+  },
   "workspaces": {
     "nohoist": [
       "**/react-native",
@@ -17,6 +21,21 @@
     "setup": "./scripts/setup.sh",
     "start": "./scripts/start.sh",
     "postinstall": "./scripts/postinstall.sh"
+  },
+  "lint-staged": {
+    "packages/sugu-ui/**/*.{ts,tsx,js,jsx,json,css,scss,md}": [
+      "prettier --config ./packages/sugu-ui/.prettierrc --write",
+      "eslint --config ./packages/sugu-ui/.eslintrc.json",
+      "git add"
+    ],
+    "packages/sugu-services/**/*.{ts,json,js,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "packages/sugu-mobile/**/*.{ts,json,js,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "metro-config": "^0.59.0"
