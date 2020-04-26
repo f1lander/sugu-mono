@@ -1,9 +1,10 @@
-import { Schema, Document, model, Types } from "mongoose";
-import { hash, compare } from "bcrypt";
-import { sign } from "jsonwebtoken";
+import { Schema, Document, model } from 'mongoose';
+import { hash, compare } from 'bcrypt';
+import { sign } from 'jsonwebtoken';
+
 const saltRounds = 10;
 
-export interface IUser extends Document {
+export interface User extends Document {
   email: string;
   nickName: string;
   firstName: string;
@@ -11,12 +12,12 @@ export interface IUser extends Document {
   password: string;
   token: string;
   config: object;
-  isCorrectPassword: (password: string) => Promise<Boolean>;
+  isCorrectPassword: (password: string) => Promise<boolean>;
   generateJWT: () => string;
   toAuthJSON: () => object;
 }
 
-const UserSchema: Schema = new Schema({
+const UserSchema = new Schema<User>({
   email: { type: String, required: true, unique: true },
   nickName: { type: String, required: false },
   firstName: { type: String, required: false },
@@ -27,7 +28,7 @@ const UserSchema: Schema = new Schema({
     required: true,
     default: {
       preferences: {
-        language: "es",
+        language: 'es',
       },
     },
   },
@@ -35,11 +36,13 @@ const UserSchema: Schema = new Schema({
 
 // All the prototypes methods
 
-UserSchema.methods.isCorrectPassword = function (password: string) {
+UserSchema.methods.isCorrectPassword = function isCorrectPassword(
+  password: string,
+): Promise<boolean> {
   return compare(password, this.password);
 };
 
-UserSchema.methods.generateJWT = function () {
+UserSchema.methods.generateJWT = function generateJWT(): string {
   const today = new Date();
   const expirationDate = new Date(today);
   expirationDate.setDate(today.getDate() + 60);
@@ -47,31 +50,30 @@ UserSchema.methods.generateJWT = function () {
   return sign(
     {
       email: this.email,
-      id: this._id,
+      id: this._id, // eslint-disable-line no-underscore-dangle
       exp,
     },
-    "secret"
+    'secret',
   );
 };
 
-UserSchema.methods.toAuthJSON = function () {
+UserSchema.methods.toAuthJSON = function toAuthJSON(): {
+  email: string;
+  token: string;
+} {
   return {
     email: this.email,
     token: this.generateJWT(),
   };
 };
 
-// All the pre methods
-UserSchema.pre("save", function (next) {
-  // Check if document is new or a new password has been set
-  if (this.isNew || this.isModified("password")) {
-    // Saving reference to this because of changing scopes
-    const document: any = this;
-    hash(document.password, saltRounds, function (err, hashedPassword) {
+UserSchema.pre<User>('save', function pre(next) {
+  if (this.isNew || this.isModified('password')) {
+    hash(this.password, saltRounds, (err, hashedPassword) => {
       if (err) {
         next(err);
       } else {
-        document.password = hashedPassword;
+        this.password = hashedPassword;
         next();
       }
     });
@@ -80,5 +82,4 @@ UserSchema.pre("save", function (next) {
   }
 });
 
-// Export the model and return your IUser interface
-export default model<IUser>("User", UserSchema);
+export default model<User>('User', UserSchema);

@@ -12,7 +12,7 @@
     "start": "react-native start",
     "test": "jest",
     "expo": "expo start -c",
-    "lint": "eslint **/*.{ts,tsx,js,jsx} --fix --no-error-on-unmatched-pattern",
+    "lint": "eslint {src/**/*,./*,__tests__}.{ts,tsx,js,jsx} --fix --no-error-on-unmatched-pattern",
     "format": "prettier . --write"
   },
   "dependencies": {
@@ -53,7 +53,7 @@
     "typescript": "~3.8.3"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "jest-expo"
   },
   "private": true
 }
