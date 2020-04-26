@@ -1,6 +1,6 @@
 import * as passport from 'passport';
 import { Request, Response, NextFunction } from 'express';
-import cloneDeep from 'lodash-es/cloneDeep';
+import cloneDeep from 'lodash/cloneDeep';
 
 import UserModel, { User } from '../models/user';
 

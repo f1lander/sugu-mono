@@ -13,6 +13,6 @@ module.exports = {
       statements: 80,
     },
   },
-  coverageReporters: ['json', 'lcov', 'text', 'clover', 'jest-junit'],
+  coverageReporters: ['json', 'lcov', 'text', 'clover'],
   coverageDirectory: './coverage',
 };
