@@ -1,8 +1,8 @@
-import * as mongoose from 'mongoose';
+// import * as mongoose from 'mongoose';
 import * as passport from 'passport';
 import * as LocalStrategy from 'passport-local';
 
-import { default as User, IUser } from '../models/User';
+// import User, { IUser } from '../models/user';
 
 // passport.use(
 //   "local",
@@ -44,7 +44,7 @@ import { default as User, IUser } from '../models/User';
 
 passport.use(
   'local',
-  new LocalStrategy((username: any, password: any, done: any) => {
+  new LocalStrategy((username: string, password: string, done: function) => {
     User.findOne({ email: username })
       .then(async (user) => {
         const isCorrectPass = await user.isCorrectPassword(password);

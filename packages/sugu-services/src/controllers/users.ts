@@ -1,13 +1,17 @@
 import * as passport from 'passport';
-import { default as User, IUser } from '../models/User';
-
 import { Request, Response, NextFunction } from 'express';
+import cloneDeep from 'lodash-es/cloneDeep';
 
-const login = async (req: Request, res: Response, next: NextFunction) => {
-  const { username, password } = req.body;
-  console.log(username, password);
+import UserModel, { User } from '../models/user';
 
-  const user: IUser = await User.findOne({ email: username }).exec();
+const login = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<any> => {
+  const { username } = req.body;
+
+  const user: User = await UserModel.findOne({ email: username }).exec();
 
   if (!user) {
     return res.status(401).json({
@@ -17,13 +21,14 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
 
   return passport.authenticate(
     'local',
-    (err: any, user: IUser & any, info: any) => {
+    (err: Error, authenticatedUser: User) => {
       if (err) {
         return next(err);
       }
 
       if (user) {
-        user.token = user.generateJWT();
+        const generatedUser = cloneDeep(authenticatedUser);
+        generatedUser.token = generatedUser.generateJWT();
 
         return res.json({ ...user.toAuthJSON() });
       }
@@ -33,14 +38,14 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
   )(req, res, next);
 };
 
-const register = async (req: Request, res: Response, next: NextFunction) => {
+const register = async (req: Request, res: Response): Promise<void> => {
   const { email, password, nickName } = req.body;
-  const user = new User({ email, password, nickName });
+  const user = new UserModel({ email, password, nickName });
   try {
     await user.save();
     user.token = user.generateJWT();
 
-    return res.json({ ...user.toAuthJSON() });
+    res.json({ ...user.toAuthJSON() });
   } catch (error) {
     res.status(500).send({ error });
   }
