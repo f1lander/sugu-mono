@@ -1,9 +1,5 @@
 module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
-  transform: {
-    '^.+\\.ts$': 'ts-jest',
-  },
+  preset: 'react-native',
   coverageThreshold: {
     global: {
       branches: 80,

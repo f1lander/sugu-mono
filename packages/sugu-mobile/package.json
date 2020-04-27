@@ -10,7 +10,8 @@
     "ios": "react-native run-ios",
     "web": "expo start --web",
     "start": "react-native start",
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
+    "test:coverage": "jest --detectOpenHandles --coverage",
     "expo": "expo start -c",
     "lint": "eslint {src/**/*,./*,__tests__}.{ts,tsx,js,jsx} --fix --no-error-on-unmatched-pattern",
     "format": "prettier . --write"
@@ -28,10 +29,11 @@
     "react-native-web": "~0.11.7"
   },
   "devDependencies": {
-    "@babel/core": "~7.8.6",
+    "@babel/core": "^7.9.0",
     "@react-native-community/eslint-config": "^1.0.0",
     "@types/react": "~16.9.23",
-    "@types/react-native": "~0.61.17",
+    "@types/react-native": "^0.62.4",
+    "@types/react-test-renderer": "^16.9.2",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",
     "babel-preset-expo": "~8.1.0",
@@ -51,9 +53,6 @@
     "prettier": "^2.0.4",
     "react-test-renderer": "^16.13.1",
     "typescript": "~3.8.3"
-  },
-  "jest": {
-    "preset": "jest-expo"
   },
   "private": true
 }

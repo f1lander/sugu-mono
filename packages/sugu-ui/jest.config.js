@@ -1,5 +1,4 @@
 module.exports = {
-  collectCoverage: true,
   coverageThreshold: {
     global: {
       branches: 80,
@@ -8,6 +7,6 @@ module.exports = {
       statements: 80,
     },
   },
-  coverageReporters: ['lcov'],
+  coverageReporters: ['lcov', 'text'],
   coverageDirectory: './coverage',
 };
