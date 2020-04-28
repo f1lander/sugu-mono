@@ -31,6 +31,7 @@
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@react-native-community/eslint-config": "^1.0.0",
+    "@testing-library/react-native": "^5.0.3",
     "@types/jest": "^25.2.1",
     "@types/react": "^16.9.34",
     "@types/react-native": "^0.62.4",
@@ -50,9 +51,9 @@
     "eslint-plugin-react-native-a11y": "^2.0.0",
     "eslint-plugin-react-redux": "^3.0.3",
     "expo-yarn-workspaces": "^1.2.1",
+    "jest": "^25.4.0",
     "prettier": "^2.0.4",
     "react-test-renderer": "^16.13.1",
-    "ts-jest": "^25.4.0",
     "typescript": "~3.8.3"
   },
   "private": true
