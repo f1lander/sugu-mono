@@ -2,7 +2,7 @@
 import * as passport from 'passport';
 import * as LocalStrategy from 'passport-local';
 
-// import User, { IUser } from '../models/user';
+import UserModel from '../models/user';
 
 // passport.use(
 //   "local",
@@ -44,8 +44,8 @@ import * as LocalStrategy from 'passport-local';
 
 passport.use(
   'local',
-  new LocalStrategy((username: string, password: string, done: function) => {
-    User.findOne({ email: username })
+  new LocalStrategy((username: string, password: string, done: any) => {
+    UserModel.findOne({ email: username })
       .then(async (user) => {
         const isCorrectPass = await user.isCorrectPassword(password);
         if (!user || !isCorrectPass) {

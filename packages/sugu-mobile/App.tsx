@@ -12,10 +12,12 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function App(): React.FC {
+const App: React.FunctionComponent = function App() {
   return (
     <View style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
     </View>
   );
-}
+};
+
+export default App;

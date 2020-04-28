@@ -1,11 +1,15 @@
-import * as jwt from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 
 import { Request, Response, NextFunction } from 'express';
 
 const secret = process.env.SECRET_KEY;
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const WithAuth = (req: Request & User, res: Response, next: NextFunction) => {
+const WithAuth = (
+  req: Request & { email: string },
+  res: Response,
+  next: NextFunction,
+) => {
   const token =
     req.body.token ||
     req.query.token ||

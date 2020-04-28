@@ -1,9 +1,9 @@
-import * as jwt from 'express-jwt';
+import jwt from 'express-jwt';
 import { Request } from 'express';
 
 require('dotenv').config();
 
-const getTokenFromHeaders = (req: Request): string => {
+export const getTokenFromHeaders = (req: Request): string => {
   const {
     headers: { authorization },
   } = req;

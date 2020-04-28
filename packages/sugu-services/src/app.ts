@@ -1,10 +1,10 @@
-import * as express from 'express';
-import * as bodyParser from 'body-parser';
-import * as session from 'express-session';
-import * as cors from 'cors';
+import express from 'express';
+import bodyParser from 'body-parser';
+import session from 'express-session';
+import cors from 'cors';
 import { connect, set } from 'mongoose';
 import { join } from 'path';
-import * as errorHandler from 'errorhandler';
+import errorHandler from 'errorhandler';
 import router from './router/index';
 
 require('dotenv').config();

@@ -63,3 +63,7 @@ app.manifest
 # Expo
 .expo/*
 __generated__/
+
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov
